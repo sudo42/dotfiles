@@ -1,0 +1,58 @@
+[global]
+    font = "DejaVu Sans 9"
+    markup = full
+    # Format strings
+    # %a - appname
+    # %s - summary
+    # %p - progress (if set)
+    # %b - body
+    # %i - iconname (with path)
+    # %I - iconname (without path)
+    format = "<u>%a</u>\n<b>%s %p</b>\n%b"
+    sort = yes
+    indicate_hidden = true
+    idle_threshold = 0
+    geometry = "350x50-35+25"
+    shrink = no
+    alignment = center
+    show_age_threshold = 60
+    show_indicators = yes
+    sticky_history = yes
+    follow = mouse
+    word_wrap = no
+    ellipsize = end
+    separator_height = 2
+    padding = 10
+    horizontal_padding = 10
+    separator_color = frame
+    startup_notification = true
+    frame_width = 1
+    frame_color = "#00ff00"
+    transparency = 15
+    icon_position = left
+    max_icon_size = 32
+
+[shortcuts]
+    close = ctrl+space
+    close_all = ctrl+shift+space
+    history = ctrl+grave
+    context = ctrl+shift+period
+
+[urgency_low]
+    background = "#445544"
+    foreground = "#cccccc"
+    timeout = 4
+    frame_color = "#cccccc"
+
+[urgency_normal]
+    background = "#000000"
+    foreground = "#eeeeee"
+    timeout = 8
+
+[urgency_critical]
+    background = "#000000"
+    foreground = "#ff4444"
+    frame_color = "#ff0000"
+    frame_width = 2
+    timeout = 0
+

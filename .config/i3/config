@@ -23,7 +23,8 @@ set $term termite
 #set $menu dmenu_run
 #set $menu i3-dmenu-desktop --dmenu="rofi -dmenu -bg 'argb:cc111111' -bgalt 'argb:cc222222' -hlbg '#077' -bc '#077' -fg '#ccc' -font 'Hack 10' -opacity '50' -eh 1 -i -p 'RUN: '"
 #set $menu i3-dmenu-desktop --dmenu="rofi -dmenu -bg 'argb:cc111111' -bgalt 'argb:cc222222' -hlbg '#077' -bc '#077' -fg '#ccc' -font 'Hack 10' -opacity '75' -eh 1 -i -p 'RUN: '"
-set $menu i3-dmenu-desktop --dmenu="rofi -dmenu -bg 'argb:cc111111' -bgalt 'argb:cc222222' -hlbg '#077' -bc '#077' -fg '#ccc' -font 'Hack 10' -opacity '75' -eh 1 -i -p 'RUN: '"
+#set $menu i3-dmenu-desktop --dmenu="rofi -dmenu -bg 'argb:cc111111' -bgalt 'argb:cc222222' -hlbg '#077' -bc '#077' -fg '#ccc' -font 'Hack 10' -opacity '75' -eh 1 -i -p 'RUN: '"
+set $menu "rofi -modi drun,window,run -show drun -eh 1 -i -p 'RUN' -show-icons -color-window '#cc111111,#222,#222' -color-normal '#cc111111,#ccc,#cc222222,#077,#ccc' -font 'Fira Code 11'"
 
 set $lockCMD ~/scripts/lock_session.sh
 bindsym $mod+l exec $lockCMD
@@ -299,14 +300,14 @@ for_window [class="keepassxc" instance="keepassxc"] floating enable
 # volume hotkeys
 
 ## pulse
-#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2db #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -2db #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 ## alsa
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset Master 2db+ # Vol +
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 2db- # Vol -
-bindsym XF86AudioMute exec --no-startup-id amixer sset Master toggle # Mute toggle
+#bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset Master 2db+ # Vol +
+#bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 2db- # Vol -
+#bindsym XF86AudioMute exec --no-startup-id amixer sset Master toggle # Mute toggle
 
 # screenshots
 bindsym Print exec spectacle

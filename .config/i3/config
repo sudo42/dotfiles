@@ -326,3 +326,8 @@ bindsym Print exec spectacle
 
 #bindsym XF86MonBrightnessDown exec dsplight down 5
 #bindsym XF86MonBrightnessUp exec dsplight up 5
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5
+
+exec nm-applet
+exec volumeicon

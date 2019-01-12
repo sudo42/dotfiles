@@ -97,8 +97,10 @@ source $ZSH/oh-my-zsh.sh
 case $- in
     *i*) 
 #        { pidof ssh-agent || eval `ssh-agent` } > /dev/null;
-        type screenfetch > /dev/null && screenfetch -t;
+#        type screenfetch > /dev/null && screenfetch -t;
         ;
 esac
 
 source $HOME/.aliases
+
+setopt histignorespace

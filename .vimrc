@@ -24,3 +24,6 @@ set tabstop=4
 set background=dark
 hi Normal guibg=NONE ctermbg=NONE
 hi NonText ctermbg=NONE
+
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+set list

@@ -24,7 +24,8 @@ set $term termite
 #set $menu i3-dmenu-desktop --dmenu="rofi -dmenu -bg 'argb:cc111111' -bgalt 'argb:cc222222' -hlbg '#077' -bc '#077' -fg '#ccc' -font 'Hack 10' -opacity '50' -eh 1 -i -p 'RUN: '"
 #set $menu i3-dmenu-desktop --dmenu="rofi -dmenu -bg 'argb:cc111111' -bgalt 'argb:cc222222' -hlbg '#077' -bc '#077' -fg '#ccc' -font 'Hack 10' -opacity '75' -eh 1 -i -p 'RUN: '"
 #set $menu i3-dmenu-desktop --dmenu="rofi -dmenu -bg 'argb:cc111111' -bgalt 'argb:cc222222' -hlbg '#077' -bc '#077' -fg '#ccc' -font 'Hack 10' -opacity '75' -eh 1 -i -p 'RUN: '"
-set $menu "rofi -modi drun,window,run -show drun -eh 1 -i -p 'RUN' -show-icons -color-window '#cc111111,#222,#222' -color-normal '#cc111111,#ccc,#cc222222,#077,#ccc' -font 'Fira Code 11'"
+#set $menu "rofi -modi drun,window,run -show drun -eh 1 -i -p 'RUN' -show-icons -color-window '#cc111111,#222,#222' -color-normal '#cc111111,#ccc,#cc222222,#077,#ccc' -font 'Fira Code 11'"
+set $menu "rofi -show combi"
 
 set $lockCMD ~/scripts/lock_session.sh
 bindsym $mod+l exec $lockCMD

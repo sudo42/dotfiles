@@ -1,0 +1,9 @@
+rofi.combi-modi: drun,run,ssh
+rofi.modi: combi,window
+rofi.case-sensitive: true
+rofi.display-combi: RUN
+rofi.color-window: #cc111111,#222,#222
+rofi.color-normal: #cc111111,#cdddcc,#cc222222,#077,#ccc
+rofi.show-icons: true
+rofi.font: Fira Code 11
+rofi.ssh-command: {terminal} -e "{ssh-client} {host}"

@@ -297,6 +297,7 @@ bar {
 
 ## application specific settings
 for_window [class="keepassxc" instance="keepassxc"] floating enable
+for_window [class="kruler" instance="kruler"] floating enable
 
 # volume hotkeys
 

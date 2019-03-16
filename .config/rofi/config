@@ -7,3 +7,4 @@ rofi.color-normal: #cc111111,#cdddcc,#cc222222,#077,#ccc
 rofi.show-icons: true
 rofi.font: Fira Code 11
 rofi.ssh-command: {terminal} -e "{ssh-client} {host}"
+rofi.case-sensitive: false

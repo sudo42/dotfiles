@@ -27,3 +27,5 @@ hi NonText ctermbg=NONE
 
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 set list
+
+let g:gitgutter_enabled = 1

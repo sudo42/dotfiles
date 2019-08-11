@@ -10,6 +10,7 @@
 #
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
+set $alt Mod1
 # Home row direction keys, like vim
 set $left h
 set $down j
@@ -45,7 +46,7 @@ gaps inner 10
 # Smart gaps (gaps used if only more than one container on the workspace)
 # smart_gaps off
 
-default_border pixel 2
+default_border pixel 1
 #default_floating_border none
 #hide_edge_borders both
 
@@ -184,8 +185,8 @@ bindsym $mod+Shift+9 move container to workspace $WS9
 bindsym $mod+Shift+0 move container to workspace $WS0
     
 # switch through workspaces
-bindsym $mod+Alt+Left workspace prev
-bindsym $mod+Alt+Right workspace next
+bindsym $mod+$alt+Left workspace prev
+bindsym $mod+$alt+Right workspace next
 
 #
 # Layout stuff:
@@ -212,6 +213,7 @@ bindsym $mod+Alt+Right workspace next
 
     # move focus to the parent container
     bindsym $mod+a focus parent
+    bindsym $mod+Shift+a focus child
 #
 # Scratchpad:
 #
@@ -294,6 +296,13 @@ bar {
         urgent_workspace   #ffff00   #444400   #ffffff
 	}
 }
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #00aa00 #004400 #00ff00 #2e9ef4   #00aa00
+client.focused_inactive #22cc22 #222222 #cccccc #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 ## application specific settings
 for_window [class="keepassxc" instance="keepassxc"] floating enable

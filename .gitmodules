@@ -5,3 +5,6 @@
 [submodule ".vim_runtime"]
     path = .vim_runtime
     url = https://github.com/amix/vimrc.git
+[submodule ".config/i3blocks/i3blocks-contrib"]
+	path = .config/i3blocks/i3blocks-contrib
+	url = https://github.com/vivien/i3blocks-contrib

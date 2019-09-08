@@ -281,11 +281,12 @@ bar {
 	strip_workspace_numbers yes
 	position 		top
 #	mode 			dock
-#	workspace_buttons 	yes
-  	height 			17
+	workspace_buttons 	yes
+	height 			16
 #	font 			pango: "FontAwesome", "Noto Color Emoji", "Noto Emoji", "DejaVu Sans", Hack, Noto 10
 #	font 			pango:"Open Sans", "DejaVu Sans", "Font Awesome 5 Free", "Noto Emoji", IonIcons, Octicons, Icons 10
-	font 			pango:Hack, "Font Awesome 5 Free", "Noto Emoji" 9
+#	font 			pango:Hack, "Font Awesome 5 Free", "Noto Emoji" 9
+	font 			pango: DejaVu Sans Mono, Go Mono, Fira Code, Font Awesome 5 Free, Hack 9
 #	font 			xft:Open Sans, DejaVu Sans, FontAwesome, Noto Emoji, IonIcons, Octicons, Icons 9
 	colors {
 		statusline #CCCCCC

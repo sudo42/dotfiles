@@ -306,7 +306,7 @@ client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 ## application specific settings
-for_window [class="keepassxc" instance="keepassxc"] floating enable
+for_window [class="KeePassXC" instance="keepassxc"] floating enable
 for_window [class="kruler" instance="kruler"] floating enable
 
 # volume hotkeys

@@ -149,16 +149,40 @@ default_border pixel 1
 #
 
 # customize workspace name
-set $WS1   1
-set $WS2   2
-set $WS3   3
-set $WS4   4
-set $WS5   5
-set $WS6   6
-set $WS7   7
-set $WS8   8
-set $WS9   9
-set $WS0   10
+set $WS1        1
+set $WS2        2
+set $WS3        3
+set $WS4        4
+set $WS5        5
+set $WS6        6
+set $WS7        7
+set $WS8        8
+set $WS9        9
+set $WS0        10:0
+#set $WS_F01     Ⅰ
+#set $WS_F02     Ⅱ
+#set $WS_F03     Ⅲ
+#set $WS_F04     Ⅳ
+#set $WS_F05     Ⅴ
+#set $WS_F06     Ⅵ
+#set $WS_F07     Ⅶ
+#set $WS_F08     Ⅷ
+#set $WS_F09     Ⅸ
+#set $WS_F10     Ⅹ
+#set $WS_F11     Ⅺ
+#set $WS_F12     Ⅻ
+set $WS_F01     101:一
+set $WS_F02     102:二
+set $WS_F03     103:三
+set $WS_F04     104:四
+set $WS_F05     105:五
+set $WS_F06     106:六
+set $WS_F07     107:七
+set $WS_F08     108:八
+set $WS_F09     109:九
+set $WS_F10     110:十
+#set $WS_F11     十一
+#set $WS_F12     十二
 
 # switch to workspace
 bindsym $mod+1 workspace $WS1
@@ -171,6 +195,18 @@ bindsym $mod+7 workspace $WS7
 bindsym $mod+8 workspace $WS8
 bindsym $mod+9 workspace $WS9
 bindsym $mod+0 workspace $WS0
+bindsym $mod+F1 workspace $WS_F01
+bindsym $mod+F2 workspace $WS_F02
+bindsym $mod+F3 workspace $WS_F03
+bindsym $mod+F4 workspace $WS_F04
+bindsym $mod+F5 workspace $WS_F05
+bindsym $mod+F6 workspace $WS_F06
+bindsym $mod+F7 workspace $WS_F07
+bindsym $mod+F8 workspace $WS_F08
+bindsym $mod+F9 workspace $WS_F09
+bindsym $mod+F10 workspace $WS_F10
+#bindsym $mod+F11 workspace $WS_F11
+#bindsym $mod+F12 workspace $WS_F12
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $WS1
@@ -183,7 +219,19 @@ bindsym $mod+Shift+7 move container to workspace $WS7
 bindsym $mod+Shift+8 move container to workspace $WS8
 bindsym $mod+Shift+9 move container to workspace $WS9
 bindsym $mod+Shift+0 move container to workspace $WS0
-    
+bindsym $mod+Shift+F1 move container to workspace $WS_F01
+bindsym $mod+Shift+F2 move container to workspace $WS_F02
+bindsym $mod+Shift+F3 move container to workspace $WS_F03
+bindsym $mod+Shift+F4 move container to workspace $WS_F04
+bindsym $mod+Shift+F5 move container to workspace $WS_F05
+bindsym $mod+Shift+F6 move container to workspace $WS_F06
+bindsym $mod+Shift+F7 move container to workspace $WS_F07
+bindsym $mod+Shift+F8 move container to workspace $WS_F08
+bindsym $mod+Shift+F9 move container to workspace $WS_F09
+bindsym $mod+Shift+F10 move container to workspace $WS_F10
+#bindsym $mod+Shift+F11 move container to workspace $WS_F11
+#bindsym $mod+Shift+F12 move container to workspace $WS_F12
+
 # switch through workspaces
 bindsym $mod+$alt+Left workspace prev
 bindsym $mod+$alt+Right workspace next

@@ -31,6 +31,9 @@
     transparency = 15
     icon_position = left
     max_icon_size = 64
+    mouse_left_click = close_current
+    mouse_middle_click = do_action
+    dmenu = /usr/bin/rofi -dmenu -p dunst
 
 [shortcuts]
     close = ctrl+space

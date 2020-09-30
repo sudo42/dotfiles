@@ -31,7 +31,8 @@ set $menu "rofi -show combi"
 set $lockCMD ~/scripts/lock_session.sh
 bindsym $mod+l exec $lockCMD
 
-exec --no-startup-id compton -cCGb --backend glx --vsync --detect-transient --detect-client-leader --detect-client-leader
+#exec --no-startup-id compton -cCGb --backend glx --vsync --detect-transient --detect-client-leader --detect-client-leader
+exec --no-startup-id picom
 exec --no-startup-id dunst
 exec --no-startup-id feh --bg-fill ~/.config/i3/wallpaper
 exec --no-startup-id alsactl rdaemon

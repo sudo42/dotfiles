@@ -32,12 +32,15 @@ set $lockCMD ~/scripts/lock_session.sh
 bindsym $mod+l exec $lockCMD
 
 #exec --no-startup-id compton -cCGb --backend glx --vsync --detect-transient --detect-client-leader --detect-client-leader
-exec --no-startup-id picom
+exec --no-startup-id picom --experimental-backends
 exec --no-startup-id dunst
 exec --no-startup-id feh --bg-fill ~/.config/i3/wallpaper
 exec --no-startup-id alsactl rdaemon
 
 focus_follows_mouse no
+focus_on_window_activation urgent
+
+show_marks yes
 
 font pango:Hack 9
 
@@ -256,6 +259,9 @@ bindsym $mod+$alt+Right workspace next
 
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+Shift+space floating toggle
+
+    # toggle the current window between sticky and non sticky
+    bindsym $mod+Shift+s sticky toggle
 
     # Swap focus between the tiling area and the floating area
     bindsym $mod+space focus mode_toggle

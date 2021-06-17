@@ -86,6 +86,12 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
+unset SSH_AGENT_PID
+if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+fi
+
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -102,6 +108,8 @@ case $- in
         ;
 esac
 
+setopt histignorespace
+
 source $HOME/.aliases
 
-setopt histignorespace
+# kitty + complete setup zsh | source /dev/stdin

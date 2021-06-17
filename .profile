@@ -1,6 +1,11 @@
 export EDITOR=vim
 export TERMINAL=termite
 export TERM=termite
+
+LANG=en_GB.UTF-8
+LC_TIME=en_SE.UTF-8
+LC_MONETARY=de_DE.UTF-8
+
 export QT_SELECT=5
 #export QT_QPA_PLATFORMTHEME=breeze
 #export QT_QPA_PLATFORMTHEME=qt5ct

@@ -1,0 +1,414 @@
+#include /etc/sway/config
+
+input type:keyboard {
+    xkb_layout "us"
+    xkb_variant "altgr-intl"
+}
+
+input type:touchpad {
+    accel_profile adaptive
+#    click_method clickfinger
+    drag enabled
+    middle_emulation disabled
+    natural_scroll enabled
+    pointer_accel 0.2
+    scroll_factor .7
+    scroll_method two_finger
+    tap enabled
+    tap_button_map lrm
+}
+
+output * {
+#    scale 1
+    background ~/.config/wallpaper fill #666666
+}
+output eDP-1 {
+#    scale 2
+#    scale 1
+    subpixel rgb
+    pos 0 0
+}
+
+output "Acer Technologies Acer B296CL 0x00007FF3" mode --custom 2560x1080@60Hz
+
+xwayland force
+
+seat * {
+    xcursor_theme Breeze_Hacked
+}
+
+# Default config for sway
+#
+# Copy this to ~/.config/sway/config and edit it to your liking.
+#
+# Read `man 5 sway` for a complete reference.
+
+### Variables
+#
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+set $alt Mod1
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+# Your preferred terminal emulator
+#set $term x-terminal-emulator
+#set $term i3-sensible-terminal
+set $term termite
+# Your preferred application launcher
+#set $menu dmenu_run
+#set $menu i3-dmenu-desktop --dmenu="rofi -dmenu -bg 'argb:cc111111' -bgalt 'argb:cc222222' -hlbg '#077' -bc '#077' -fg '#ccc' -font 'Hack 10' -opacity '50' -eh 1 -i -p 'RUN: '"
+#set $menu i3-dmenu-desktop --dmenu="rofi -dmenu -bg 'argb:cc111111' -bgalt 'argb:cc222222' -hlbg '#077' -bc '#077' -fg '#ccc' -font 'Hack 10' -opacity '75' -eh 1 -i -p 'RUN: '"
+#set $menu i3-dmenu-desktop --dmenu="rofi -dmenu -bg 'argb:cc111111' -bgalt 'argb:cc222222' -hlbg '#077' -bc '#077' -fg '#ccc' -font 'Hack 10' -opacity '75' -eh 1 -i -p 'RUN: '"
+#set $menu "rofi -modi drun,window,run -show drun -eh 1 -i -p 'RUN' -show-icons -color-window '#cc111111,#222,#222' -color-normal '#cc111111,#ccc,#cc222222,#077,#ccc' -font 'Fira Code 11'"
+#set $menu "rofi -show combi"
+set $menu "wofi --gtk-dark --show drun --prompt ''"
+
+set $lockCMD ~/scripts/lock_session.sh
+bindsym $mod+l exec $lockCMD
+
+#exec --no-startup-id compton -cCGb --backend glx --vsync --detect-transient --detect-client-leader --detect-client-leader
+exec --no-startup-id picom --experimental-backends
+exec --no-startup-id dunst
+exec --no-startup-id feh --bg-fill ~/.config/i3/wallpaper
+exec --no-startup-id alsactl rdaemon
+
+focus_follows_mouse no
+focus_on_window_activation urgent
+
+show_marks yes
+
+#font pango:Hack 9
+font pango:Noto Sans Mono 7
+
+titlebar_border_thickness 0
+titlebar_padding 4 0
+
+# nice gaps!
+gaps inner 10
+
+# Smart gaps (gaps used if only more than one container on the workspace)
+# smart_gaps off
+
+default_border pixel 1
+#default_floating_border none
+#hide_edge_borders both
+
+# Smart borders (draw borders around container only if it is not the only container on this workspace)
+# on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
+# smart_borders on
+
+### Output configuration
+#
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+# output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+#output * bg ~/data_richard/richard_data/wallpaper/poro_destruction.jpg fill
+
+#
+# Example configuration:
+#
+#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+#
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+
+### Input configuration
+#
+# Example configuration:
+#
+#   input "2:14:SynPS/2_Synaptics_TouchPad" {
+#       dwt enabled
+#       tap enabled
+#       natural_scroll enabled
+#       middle_emulation enabled
+#   }
+#
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
+
+#input 2:15:FSPPS/2_Sentelic_FingerSensingPad {
+#    tap enabled
+#    natural_scroll enabled
+#    dwt enabled
+#    scroll_method edge
+#    accel_profile adaptive
+#}
+
+
+### Key bindings
+#
+# Basics:
+#
+    # start a terminal
+    bindsym $mod+Return exec $term
+
+    # kill focused window
+    bindsym $mod+Shift+q kill
+
+    # start your launcher
+    bindsym $mod+d exec $menu
+
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+#    floating_modifier $mod normal
+    floating_modifier $mod
+
+    # reload the configuration file
+    bindsym $mod+Shift+r reload
+
+    # exit sway (logs you out of your wayland session)
+#    bindsym $mod+Shift+e exit
+#    bindsym $mod+Shift+e exec i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
+    bindsym $mod+Shift+e exec "swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your sway session.' -b 'Yes, exit sway' 'swaymsg exit'"
+
+#
+# Moving around:
+#
+    # Move your focus around
+#    bindsym $mod+$left focus left
+#    bindsym $mod+$down focus down
+#    bindsym $mod+$up focus up
+#    bindsym $mod+$right focus right
+    # or use $mod+[up|down|left|right]
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
+
+    # _move_ the focused window with the same, but add Shift
+#    bindsym $mod+Shift+$left move left
+#    bindsym $mod+Shift+$down move down
+#    bindsym $mod+Shift+$up move up
+#    bindsym $mod+Shift+$right move right
+    # ditto, with arrow keys
+    bindsym $mod+Shift+Left move left
+    bindsym $mod+Shift+Down move down
+    bindsym $mod+Shift+Up move up
+    bindsym $mod+Shift+Right move right
+#
+# Workspaces:
+#
+
+# customize workspace name
+set $WS1        1
+set $WS2        2
+set $WS3        3
+set $WS4        4
+set $WS5        5
+set $WS6        6
+set $WS7        7
+set $WS8        8
+set $WS9        9
+set $WS0        10:0
+#set $WS_F01     Ⅰ
+#set $WS_F02     Ⅱ
+#set $WS_F03     Ⅲ
+#set $WS_F04     Ⅳ
+#set $WS_F05     Ⅴ
+#set $WS_F06     Ⅵ
+#set $WS_F07     Ⅶ
+#set $WS_F08     Ⅷ
+#set $WS_F09     Ⅸ
+#set $WS_F10     Ⅹ
+#set $WS_F11     Ⅺ
+#set $WS_F12     Ⅻ
+set $WS_F01     101:一
+set $WS_F02     102:二
+set $WS_F03     103:三
+set $WS_F04     104:四
+set $WS_F05     105:五
+set $WS_F06     106:六
+set $WS_F07     107:七
+set $WS_F08     108:八
+set $WS_F09     109:九
+set $WS_F10     110:十
+#set $WS_F11     十一
+#set $WS_F12     十二
+
+# switch to workspace
+bindsym $mod+1 workspace $WS1
+bindsym $mod+2 workspace $WS2
+bindsym $mod+3 workspace $WS3
+bindsym $mod+4 workspace $WS4
+bindsym $mod+5 workspace $WS5
+bindsym $mod+6 workspace $WS6
+bindsym $mod+7 workspace $WS7
+bindsym $mod+8 workspace $WS8
+bindsym $mod+9 workspace $WS9
+bindsym $mod+0 workspace $WS0
+bindsym $mod+F1 workspace $WS_F01
+bindsym $mod+F2 workspace $WS_F02
+bindsym $mod+F3 workspace $WS_F03
+bindsym $mod+F4 workspace $WS_F04
+bindsym $mod+F5 workspace $WS_F05
+bindsym $mod+F6 workspace $WS_F06
+bindsym $mod+F7 workspace $WS_F07
+bindsym $mod+F8 workspace $WS_F08
+bindsym $mod+F9 workspace $WS_F09
+bindsym $mod+F10 workspace $WS_F10
+#bindsym $mod+F11 workspace $WS_F11
+#bindsym $mod+F12 workspace $WS_F12
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $WS1
+bindsym $mod+Shift+2 move container to workspace $WS2
+bindsym $mod+Shift+3 move container to workspace $WS3
+bindsym $mod+Shift+4 move container to workspace $WS4
+bindsym $mod+Shift+5 move container to workspace $WS5
+bindsym $mod+Shift+6 move container to workspace $WS6
+bindsym $mod+Shift+7 move container to workspace $WS7
+bindsym $mod+Shift+8 move container to workspace $WS8
+bindsym $mod+Shift+9 move container to workspace $WS9
+bindsym $mod+Shift+0 move container to workspace $WS0
+bindsym $mod+Shift+F1 move container to workspace $WS_F01
+bindsym $mod+Shift+F2 move container to workspace $WS_F02
+bindsym $mod+Shift+F3 move container to workspace $WS_F03
+bindsym $mod+Shift+F4 move container to workspace $WS_F04
+bindsym $mod+Shift+F5 move container to workspace $WS_F05
+bindsym $mod+Shift+F6 move container to workspace $WS_F06
+bindsym $mod+Shift+F7 move container to workspace $WS_F07
+bindsym $mod+Shift+F8 move container to workspace $WS_F08
+bindsym $mod+Shift+F9 move container to workspace $WS_F09
+bindsym $mod+Shift+F10 move container to workspace $WS_F10
+#bindsym $mod+Shift+F11 move container to workspace $WS_F11
+#bindsym $mod+Shift+F12 move container to workspace $WS_F12
+
+# switch through workspaces
+bindsym $mod+$alt+Left workspace prev
+bindsym $mod+$alt+Right workspace next
+
+#
+# Layout stuff:
+#
+    # You can "split" the current object of your focus with
+    # $mod+b or $mod+v, for horizontal and vertical splits
+    # respectively.
+    bindsym $mod+b splith
+    bindsym $mod+v splitv
+
+    # Switch the current container between different layout styles
+    bindsym $mod+s layout stacking
+    bindsym $mod+w layout tabbed
+    bindsym $mod+e layout toggle split
+
+    # Make the current focus fullscreen
+    bindsym $mod+f fullscreen
+
+    # Toggle the current focus between tiling and floating mode
+    bindsym $mod+Shift+space floating toggle
+
+    # toggle the current window between sticky and non sticky
+    bindsym $mod+Shift+s sticky toggle
+
+    # Swap focus between the tiling area and the floating area
+    bindsym $mod+space focus mode_toggle
+
+    # move focus to the parent container
+    bindsym $mod+a focus parent
+    bindsym $mod+Shift+a focus child
+#
+# Scratchpad:
+#
+    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # You can send windows there and get them back later.
+
+    # Move the currently focused window to the scratchpad
+    bindsym $mod+Shift+minus move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    bindsym $mod+minus scratchpad show
+#
+# Resizing containers:
+#
+mode "resize" {
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
+    bindsym $left resize shrink width 10 px or 10 ppt
+    bindsym $down resize grow height 10 px or 10 ppt
+    bindsym $up resize shrink height 10 px or 10 ppt
+    bindsym $right resize grow width 10 px or 10 ppt
+
+    # ditto, with arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+
+    # return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+bar {
+#    status_command 		i3blocks -c ~/.config/i3blocks/i3blocks.conf
+#    status_command 		i3blocks
+    #status_command 		'env GTK_DEBUG=interactive waybar'
+#    status_command 		'waybar'
+    swaybar_command  'waybar'
+}
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #00aa00 #004400 #00ff00 #2e9ef4   #00aa00
+client.focused_inactive #22cc22 #222222 #cccccc #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+## application specific settings
+for_window [class="KeePassXC" instance="keepassxc"] floating enable
+for_window [class="kruler" instance="kruler"] floating enable
+
+# volume hotkeys
+
+## pulse
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2db #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -2db #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+## alsa
+#bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset Master 2db+ # Vol +
+#bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset Master 2db- # Vol -
+#bindsym XF86AudioMute exec --no-startup-id amixer sset Master toggle # Mute toggle
+
+# screenshots
+bindsym Print exec spectacle
+
+#include ~/.config/i3/conf.d/*
+
+#for_window [title="polybar"] border pixel 0
+#exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+#exec xautolock -time 11 -locker 'swaylock --color 000000 --image ~/data_richard/richard_data/wallpaper/lotr_gandalf.jpg --scaling fill --insidecolor 000000cc --insidevercolor 000000cc --insidewrongcolor 000000cc --line-uses-inside --ringwrongcolor ff0000 --textcolor ffffff --font UnPilgi --indicator-radius 55'
+
+# auto-locking ...
+# exec xautolock -time 11 -locker "$lockCMD"
+
+# exec ~/autostart-sway.sh
+
+#bindsym XF86MonBrightnessDown exec dsplight down 5
+#bindsym XF86MonBrightnessUp exec dsplight up 5
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5
+
+exec nm-applet
+exec volumeicon
+# set minimum backlight brightness to 1%
+exec light -N 1
+
+# themes ... see ~/.config/gtk-3.0/settings.ini
+set $gsettingsSchema org.gnome.desktop.interface
+exec_always {
+    gsettings set $gsettingsSchema gtk-theme 'Adapta-Nokto-Eta'
+    gsettings set $gsettingsSchema icon-theme 'Arc'
+    gsettings set $gsettingsSchema cursor-theme 'Breeze_Hacked'
+    gsettings set $gsettingsSchema font-name 'Noto Sans Medium 10'
+}

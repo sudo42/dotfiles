@@ -1,0 +1,66 @@
+{
+    "position": "top",
+    "height": 21,
+    "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+    "modules-center": ["tray"],
+    "modules-right": [
+        "network",
+        "memory", "cpu", "temperature",
+        "disk",
+        "backlight",
+        "battery",
+        "pulseaudio",
+        "idle_inhibitor",
+        "clock"
+    ],
+    "sway/workspaces": {
+        "format": "{name}"
+    },
+    "sway/mode": {
+        "tooltip": false
+    },
+    "sway/window": {
+        "tooltip": false
+    },
+    "tray": {
+        "icon-size": 12,
+        "spacing": 4
+    },
+    "network": {
+        "format": "{bandwidthDownBits} | {bandwidthUpBits} | {ipaddr}"
+    },
+    "memory": {
+        "format": "{used:0.1f} of {total:0.1f}GiB"
+    },
+    "cpu": {
+        "format": "{load} @ {usage}%"
+    },
+    "disk": {
+        "format": "{free}"
+    },
+    "backlight": {
+        "on-scroll-up": "light -A 1",
+        "on-scroll-down": "light -U 1",
+        "smooth-scrolling-threshold": 0.42
+    },
+    "battery": {
+        "interval": 25,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        }
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "clock": {
+        "timezone": "Europe/Berlin",
+        "format": "{:%aW%W, %FT%H:%M%Ez}",
+        "tooltip": false
+    },
+    "let's make json happy and give us trailing commas for everything else": null
+}

@@ -2,28 +2,37 @@
 # Group Name
 Name="Group 1"
 # Layout
-Default Layout=us-intl-unicode
+Default Layout=us-intl
 # Default Input Method
-DefaultIM=mozc
+DefaultIM=keyboard-us-altgr-intl
 
 [Groups/0/Items/0]
 # Name
-Name=keyboard-us-intl-unicode
+Name=keyboard-us-intl
 # Layout
 Layout=
 
 [Groups/0/Items/1]
 # Name
-Name=mozc
+Name=keyboard-us-altgr-intl
 # Layout
 Layout=
 
-[Groups/0/Items/2]
+[Groups/1]
+# Group Name
+Name="Group 2"
+# Layout
+Default Layout=gb
+# Default Input Method
+DefaultIM=keyboard-gb
+
+[Groups/1/Items/0]
 # Name
-Name=emoji
+Name=keyboard-gb
 # Layout
 Layout=
 
 [GroupOrder]
 0="Group 1"
+1="Group 2"
 

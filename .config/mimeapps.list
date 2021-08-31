@@ -1,0 +1,7 @@
+[Default Applications]
+image/jpeg=org.gnome.eog.desktop
+text/plain=xed.desktop
+
+[Added Associations]
+image/jpeg=org.gnome.eog.desktop;
+text/plain=xed.desktop;

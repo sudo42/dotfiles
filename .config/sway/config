@@ -17,6 +17,13 @@ input type:touchpad {
     tap enabled
     tap_button_map lrm
 }
+input "2:6:ImExPS/2_Generic_Explorer_Mouse" {
+    accel_profile adaptive
+    middle_emulation disabled
+    pointer_accel 0.3
+    scroll_factor 1
+    scroll_method edge
+}
 
 output * {
 #    scale 1
@@ -31,21 +38,15 @@ output eDP-1 {
 
 output "Acer Technologies Acer B296CL 0x00007FF3" mode --custom 2560x1080@60Hz
 
-xwayland force
+# xwayland force
+xwayland disable
 
 seat * {
-    xcursor_theme Breeze_Hacked
+    xcursor_theme "Numix-Cursor-Light"
 }
 
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
 
 ### Variables
-#
-# Logo key. Use Mod1 for Alt.
 set $mod Mod4
 set $alt Mod1
 # Home row direction keys, like vim
@@ -53,27 +54,18 @@ set $left h
 set $down j
 set $up k
 set $right l
-# Your preferred terminal emulator
-#set $term x-terminal-emulator
-#set $term i3-sensible-terminal
+
+# applications
 set $term termite
-# Your preferred application launcher
-#set $menu dmenu_run
-#set $menu i3-dmenu-desktop --dmenu="rofi -dmenu -bg 'argb:cc111111' -bgalt 'argb:cc222222' -hlbg '#077' -bc '#077' -fg '#ccc' -font 'Hack 10' -opacity '50' -eh 1 -i -p 'RUN: '"
-#set $menu i3-dmenu-desktop --dmenu="rofi -dmenu -bg 'argb:cc111111' -bgalt 'argb:cc222222' -hlbg '#077' -bc '#077' -fg '#ccc' -font 'Hack 10' -opacity '75' -eh 1 -i -p 'RUN: '"
-#set $menu i3-dmenu-desktop --dmenu="rofi -dmenu -bg 'argb:cc111111' -bgalt 'argb:cc222222' -hlbg '#077' -bc '#077' -fg '#ccc' -font 'Hack 10' -opacity '75' -eh 1 -i -p 'RUN: '"
-#set $menu "rofi -modi drun,window,run -show drun -eh 1 -i -p 'RUN' -show-icons -color-window '#cc111111,#222,#222' -color-normal '#cc111111,#ccc,#cc222222,#077,#ccc' -font 'Fira Code 11'"
-#set $menu "rofi -show combi"
-set $menu "wofi --gtk-dark --show drun --prompt ''"
+#set $menu "wofi --gtk-dark --allow-images --allow-markup --show drun,run --prompt ''"
+set $menu "wofi"
+#set $menu "rofi -modi combi,file-browser,ssh,run,keys -show"
 
 set $lockCMD ~/scripts/lock_session.sh
 bindsym $mod+l exec $lockCMD
 
-#exec --no-startup-id compton -cCGb --backend glx --vsync --detect-transient --detect-client-leader --detect-client-leader
-exec --no-startup-id picom --experimental-backends
 exec --no-startup-id dunst
-exec --no-startup-id feh --bg-fill ~/.config/i3/wallpaper
-exec --no-startup-id alsactl rdaemon
+#exec --no-startup-id alsactl rdaemon
 
 focus_follows_mouse no
 focus_on_window_activation urgent
@@ -100,18 +92,6 @@ default_border pixel 1
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
 # smart_borders on
 
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-# output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-#output * bg ~/data_richard/richard_data/wallpaper/poro_destruction.jpg fill
-
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
 
 ### Input configuration
 #
@@ -162,7 +142,6 @@ default_border pixel 1
 
     # exit sway (logs you out of your wayland session)
 #    bindsym $mod+Shift+e exit
-#    bindsym $mod+Shift+e exec i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
     bindsym $mod+Shift+e exec "swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your sway session.' -b 'Yes, exit sway' 'swaymsg exit'"
 
@@ -366,6 +345,7 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 ## application specific settings
 for_window [class="KeePassXC" instance="keepassxc"] floating enable
 for_window [class="kruler" instance="kruler"] floating enable
+for_window [title="wofi" app_id="termite"] floating enable
 
 # volume hotkeys
 
@@ -407,8 +387,18 @@ exec light -N 1
 # themes ... see ~/.config/gtk-3.0/settings.ini
 set $gsettingsSchema org.gnome.desktop.interface
 exec_always {
-    gsettings set $gsettingsSchema gtk-theme 'Adapta-Nokto-Eta'
+    gsettings set $gsettingsSchema gtk-theme 'Arc'
     gsettings set $gsettingsSchema icon-theme 'Arc'
-    gsettings set $gsettingsSchema cursor-theme 'Breeze_Hacked'
+    gsettings set $gsettingsSchema cursor-theme 'Numix-Cursor'
     gsettings set $gsettingsSchema font-name 'Noto Sans Medium 10'
+}
+
+set $dconfPath /org/gnome/desktop/interface
+exec_always {
+    dconf write $dconfPath/cursor-theme '"Numix-Cursor-Light"'
+    dconf write $dconfPath/gtk-theme '"Qogir"'
+    #dconf write $dconfPath/icon-theme '"Luna-Dark"'
+    dconf write $dconfPath/icon-theme '"Tela-orange-dark"'
+    dconf write $dconfPath/font-name '"Noto Sans 10"'
+    dconf write $dconfPath/monospace-font-name '"Noto Sans Mono 10"'
 }

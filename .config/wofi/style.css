@@ -1,0 +1,58 @@
+#window {
+  background: rgba(0, 0, 0, 0.79);
+}
+#outer-box {
+}
+
+#input {
+  border-radius: 0;
+}
+
+#entry {
+  background: rgba(127, 127, 127, 0.21);
+  color: #ccc;
+  border-radius: 0;
+}
+#entry:nth-child(2n) {
+  background: rgba(127, 127, 127, 0.1);
+}
+#entry:selected {
+  background: rgba(159, 159, 127, 0.42);
+  color: #ffa;
+}
+#entry label {
+  color: inherit;
+}
+
+#entry expander title arrow {
+  min-width: 16px;
+}
+#entry .entry {
+  margin-left: 16px;
+}
+#entry expander .entry {
+  margin-left: 0px;
+}
+
+#entry image {
+  min-width: 21px;
+}
+#entry label {
+  margin-left: 21px;
+}
+#entry image + label {
+  margin-left: 0px;
+}
+
+#entry expander list {
+  margin-left: 37px;
+  background: transparent;
+}
+#entry expander list #entry  {
+  background: transparent;
+  border-top: 1px solid #666;
+  color: #ccc;
+}
+#entry:selected expander list #entry:selected:focus {
+  color: inherit;
+}

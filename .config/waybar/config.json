@@ -1,12 +1,13 @@
 {
     "position": "top",
-    "height": 21,
+    "height": 17,
     "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
     "modules-center": ["tray"],
     "modules-right": [
         "network",
         "memory", "cpu", "temperature",
         "disk",
+        "disk#tardis",
         "backlight",
         "battery",
         "pulseaudio",
@@ -27,7 +28,13 @@
         "spacing": 4
     },
     "network": {
-        "format": "{bandwidthDownBits} | {bandwidthUpBits} | {ipaddr}"
+        "format-disabled": "disabled",
+        "format-disconnected": "offline",
+        "format": "{bandwidthDownBits} | {bandwidthUpBits} | {ifname}",
+        "format-wifi": "{bandwidthDownBits} | {bandwidthUpBits} | {ifname}: {essid} {signalStrength}% @{frequency}GHz",
+        "tooltip-format-disabled": "interface {ifname} is disabled",
+        "tooltip-format-disconnected": "interface {ifname} is not connected",
+        "tooltip-format": "{ipaddr}/{cidr} via {gwaddr}"
     },
     "memory": {
         "format": "{used:0.1f} of {total:0.1f}GiB"
@@ -36,7 +43,20 @@
         "format": "{load} @ {usage}%"
     },
     "disk": {
-        "format": "{free}"
+        "format": "{free}",
+        "states": {
+            "warning": 90,
+            "critical": 95
+        }
+    },
+    "disk#tardis": {
+        "path": "/mnt/tardis/inside",
+        "format": "{free}",
+        "states": {
+            "warning": 93,
+            "critical": 97
+        }
+
     },
     "backlight": {
         "on-scroll-up": "light -A 1",

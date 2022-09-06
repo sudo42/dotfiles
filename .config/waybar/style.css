@@ -3,8 +3,8 @@
     border-radius: 0;
     /* `otf-font-awesome` is required to be installed for icons */
     /* font-family: Roboto, Helvetica, Arial, sans-serif; */
-    font-family: Noto Sans Mono, monospace;
-    font-size: 9px;
+    font-family: /*Fantasque Sans Mono,*/ Noto Sans Mono, monospace;
+    font-size: 10px;
     min-height: 0;
 }
 
@@ -76,12 +76,42 @@ window#waybar.chromium {
     padding: 0 1em;
 }
 
-.modules-right widget > label {
+.modules-right label {
     border: 0 none transparent;
     border-bottom: 2px solid rgba(127, 127, 127, 0.666);
     padding: 0 2px;
     margin: 0 4px;
     color: #ccc;
+    color: #ddd;
+    background-color: transparent;
+}
+.modules-right label:hover {
+    color: #fff;
+}
+.modules-right label:focus {
+    background-color: rgba(0, 0, 0, 0.666);
+}
+
+.modules-right label.warning {
+    /*
+    background-color: rgba(255, 255, 0, .666);
+    color: #000;
+    */
+    color: #ff4;
+    font-weight: 500;
+}
+.modules-right label.critical {
+    background-color: rgba(127, 0, 0, .666);
+    color: #f00;
+    font-weight: 600;
+    animation: blink 0.5s linear infinite alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
 }
 
 #clock,
@@ -129,30 +159,11 @@ window#waybar.chromium {
 
 #battery.charging {
     border-bottom-color: #ccc000;
+    color: #7f7;
 }
 #battery.full {
     color: #6a0;
     border-bottom-color: #ccc000;
-}
-#battery.warning:not(.charging) {
-    background-color: rgba(255, 255, 0, .666);
-    color: #000;
-}
-#battery.critical:not(.charging) {
-    background-color: rgba(127, 0, 0, .666);
-    color: #f00;
-    animation: blink 0.5s linear infinite alternate;
-}
-
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
-}
-
-label:focus {
-    background-color: rgba(0, 0, 0, 0.666);
 }
 
 #cpu {

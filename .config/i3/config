@@ -240,6 +240,10 @@ bindsym $mod+Shift+F10 move container to workspace $WS_F10
 bindsym $mod+$alt+Left workspace prev
 bindsym $mod+$alt+Right workspace next
 
+# move workspace to other outputs
+bindsym $mod+Shift+greater move workspace to output right
+bindsym $mod+Shift+less move workspace to output left
+
 #
 # Layout stuff:
 #
